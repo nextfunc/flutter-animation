@@ -8,6 +8,7 @@ class ChromeFloatingCircles extends StatefulWidget {
 
   final BoxShape shape;
   final double size;
+  final double itemSize;
 
   final int duration;
 
@@ -19,6 +20,7 @@ class ChromeFloatingCircles extends StatefulWidget {
       @required this.bottomRightItemColor,
       this.shape = BoxShape.circle,
       this.size = 100.0,
+      this.itemSize = 30.0,
       this.duration = 1000})
       : super(key: key);
 
@@ -30,7 +32,6 @@ class _ChromeFloatingCirclesState extends State<ChromeFloatingCircles>
     with TickerProviderStateMixin {
   AnimationController translateAnimationController;
   Animation<double> animation;
-  double itemSize;
   Offset topLeftItemOffset;
   Offset topRightItemOffset;
   Offset bottomLeftItemOffset;
@@ -61,16 +62,16 @@ class _ChromeFloatingCirclesState extends State<ChromeFloatingCircles>
   }
 
   initOffsets() {
-    topLeftItemOffset = Offset(animation.value * (widget.size - itemSize),
-        animation.value * (widget.size - itemSize));
+    topLeftItemOffset = Offset(animation.value * (widget.size - widget.itemSize),
+        animation.value * (widget.size - widget.itemSize));
     topRightItemOffset = Offset(
-        (1 - animation.value) * (widget.size - itemSize),
-        animation.value * (widget.size - itemSize));
-    bottomLeftItemOffset = Offset(animation.value * (widget.size - itemSize),
-        (1 - animation.value) * (widget.size - itemSize));
+        (1 - animation.value) * (widget.size - widget.itemSize),
+        animation.value * (widget.size - widget.itemSize));
+    bottomLeftItemOffset = Offset(animation.value * (widget.size - widget.itemSize),
+        (1 - animation.value) * (widget.size - widget.itemSize));
     bottomRightItemOffset = Offset(
-        (1 - animation.value) * (widget.size - itemSize),
-        (1 - animation.value) * (widget.size - itemSize));
+        (1 - animation.value) * (widget.size - widget.itemSize),
+        (1 - animation.value) * (widget.size - widget.itemSize));
   }
 
   @override
@@ -78,8 +79,6 @@ class _ChromeFloatingCirclesState extends State<ChromeFloatingCircles>
     super.initState();
 
     initTranslateAnimation();
-
-    itemSize = widget.size * 0.25;
   }
 
   @override
@@ -124,8 +123,8 @@ class _ChromeFloatingCirclesState extends State<ChromeFloatingCircles>
     return Transform.translate(
       offset: offset,
       child: Container(
-        width: itemSize,
-        height: itemSize,
+        width: widget.itemSize,
+        height: widget.itemSize,
         decoration: BoxDecoration(
           color: color,
           shape: widget.shape,
