@@ -21,7 +21,7 @@ class App extends StatelessWidget {
                 topRightItemColor: Colors.green,
                 bottomLeftItemColor: Colors.yellow,
                 bottomRightItemColor: Colors.blue,
-                size: 50.0,
+                size: 80.0,
               )
             ],
           ),
