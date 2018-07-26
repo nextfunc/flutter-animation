@@ -1,1 +1,8 @@
-# Flutter animation
+# flutter_animation
+
+Flutter animation examples
+
+## Getting Started
+
+For help getting started with Flutter, view our online
+[documentation](https://flutter.io/).
